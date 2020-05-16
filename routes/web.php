@@ -23,6 +23,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::prefix('api')->middleware(['auth'])->group(function() {
+    Route::get('/home', 'Api\HomeController@index')->name('home');
+    Route::post('/items', 'Api\ItemController@store');
+    Route::post('/leests', 'Api\LeestController@store');
+});
+
+Route::get('/leest/{any?}', function () {
+    return view('welcome');
+});
+
 Route::get('/{any?}', function () {
     return view('welcome');
 });
+

@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    @include('partials.vuex')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 

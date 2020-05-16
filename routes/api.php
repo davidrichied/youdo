@@ -14,14 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['auth:api']], function() {
-    Route::get('/home', 'Api\HomeController@index')->name('home');
-    Route::post('/items', 'Api\ItemController@store');
-    Route::post('/leests', 'Api\LeestController@store');
-});
+//Route::group(['middleware' => ['web']], function() {
+//    Route::get('/home', 'Api\HomeController@index')->name('home');
+//    Route::post('/items', 'Api\ItemController@store');
+//    Route::post('/leests', 'Api\LeestController@store');
+//});
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-

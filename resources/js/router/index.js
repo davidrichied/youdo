@@ -10,6 +10,12 @@ const routes = [
         component: () =>
             import(/* webpackChunkName: "Home" */ "../components/Home.vue")
     },
+    {
+        name: "LeestCreate",
+        path: "/leest/create",
+        component: () =>
+            import(/* webpackChunkName: "LeestCreate" */ "../components/admin/LeestCreate.vue")
+    },
 ];
 
 const router = new VueRouter({

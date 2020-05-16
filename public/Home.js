@@ -9,6 +9,8 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -23,11 +25,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      leests: []
+    };
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/home').then(function (res) {
+      _this.leests = res.data.leests;
+    });
   }
 });
 
@@ -48,28 +58,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Home")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v("\n                    Home\n                ")
-            ])
-          ])
-        ])
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _vm.leests.length > 0
+        ? _c(
+            "div",
+            _vm._l(_vm.leests, function(leest) {
+              return _c("div", [
+                _vm._v("\n            " + _vm._s(leest.title) + "\n        ")
+              ])
+            }),
+            0
+          )
+        : _c("div", [
+            _vm._v("\n        You don't have any todo lists, yet.\n    ")
+          ]),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: { name: "LeestCreate" } } }, [
+        _vm._v("Create List")
       ])
-    ])
-  }
-]
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
